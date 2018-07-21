@@ -4,8 +4,8 @@ import time
 from bs4 import BeautifulSoup
 
 counter = 0
-endCounter = 200    # record how many data
-interval = 20       # in seconds
+endCounter = 120    # record how many data
+interval = 30       # in seconds
 
 with open('result.csv', 'wb') as f:
     while counter < endCounter:
@@ -32,6 +32,6 @@ with open('result.csv', 'wb') as f:
         driver.quit()
 
         counter = counter + 1
-        # print(CurrentTime + ',' + pageSrc[indexStart + 1:indexEnd] + ',' + tmpGasPrice + ',\n')
-        f.write(CurrentTime + ',' + pageSrc[indexStart + 1:indexEnd] + ',' + tmpGasPrice + ',\n')
+        print(CurrentTime + ',' + pageSrc[indexStart + 1:indexEnd] + ',' + tmpGasPrice + ',\n')
+        #f.write(CurrentTime + ',' + pageSrc[indexStart + 1:indexEnd] + ',' + tmpGasPrice + ',\n')
         time.sleep(interval)
