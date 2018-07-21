@@ -4,7 +4,7 @@ import time
 from bs4 import BeautifulSoup
 
 counter = 0
-endCounter = 20  # record how many data
+endCounter = 150  # record how many data
 interval = 30  # in seconds
 
 # with open('result.csv', 'wb') as f:
