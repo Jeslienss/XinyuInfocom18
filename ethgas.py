@@ -4,8 +4,8 @@ import time
 from bs4 import BeautifulSoup
 
 counter = 0
-endCounter = 30  # record how many data
-interval = 60  # in seconds
+endCounter = 1440  # record how many data
+interval = 30  # in seconds
 
 # with open('result.csv', 'wb') as f:
 while counter < endCounter:
@@ -28,7 +28,7 @@ while counter < endCounter:
     tmpGasPrice = ','.join(tmpGasPrice)
 
     now = datetime.datetime.now()
-    CurrentTime = str(now.hour) + '-' + str(now.minute) + '-' + str(now.second)
+    CurrentTime = str(now.month) + '-' + str(now.day) + ' ' + str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
     driver.quit()
 
     counter = counter + 1
