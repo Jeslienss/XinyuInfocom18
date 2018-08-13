@@ -1,22 +1,25 @@
-import urllib2
+import urllib.request as urllib2
 from bs4 import BeautifulSoup
 
-pageSource = urllib2.urlopen("https://www.blockchain.com/btc/orphaned-blocks?offset=25").read()
-soup = BeautifulSoup(pageSource, "lxml")
-table = soup.find_all('body')[0].find_all('div')[0].find_all('table', recursive=False)
+
+def find_fork(offset):
+    res = []
+    page_source = urllib2.urlopen("https://www.blockchain.com/btc/orphaned-blocks?offset=" + str(offset)).read()
+    soup = BeautifulSoup(page_source, "lxml")
+    table = soup.find_all('table', style='width:auto;border-style:none;')
+    for i in range(len(table)):
+        res.append(len(table[i].find_all('td', style='width: 235px;')))
+    print(offset, res)
+    #return res
 
 
-print(len(table[0].find_all('td')))
-print(len(table[1].find_all('td')))
-print(len(table[2].find_all('td')))
-print(len(table[3].find_all('td')))
-print(len(table[4].find_all('td')))
-print(len(table[5].find_all('td')))
-print(len(table[6].find_all('td')))
-print(len(table[7].find_all('td')))
-print(len(table[8].find_all('td')))
-print(len(table[9].find_all('td')))
-print(len(table[10].find_all('td')))
+def main():
+    # find_fork(275)
+    for x in range(0, 38):
+        find_fork(x * 25)
 
+
+if __name__ == "__main__":
+    main()
 
 # tebleLen = (len(table.find_all('tr')))
